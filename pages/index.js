@@ -1,14 +1,12 @@
 import Head from "next/head";
 import EntryList from "@/components/entryList";
 import EntryCard from "@/components/entryCard";
-import db from "../lib/db.json";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Link from "next/link";
 import useSWR from "swr";
 
 export default function Home() {
-  const [poi, setPoi] = useState(db);
   const { data, isLoading, error } = useSWR("/api/locations");
 
   if (error) return <div>failed to load</div>;
