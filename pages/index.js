@@ -4,13 +4,18 @@ import EntryCard from "@/components/entryCard";
 import db from "../lib/db.json";
 import { useState } from "react";
 import Header from "@/components/Header";
-
 import Link from "next/link";
+import useSWR from "swr";
 
 export default function Home() {
   const [poi, setPoi] = useState(db);
+  const { data, isLoading, error } = useSWR("/api/locations");
 
-  if (poi)
+  if (error) return <div>failed to load</div>;
+
+  if (isLoading) return <div>loading...</div>;
+
+  if (data)
     return (
       <>
         <Head>
@@ -23,10 +28,10 @@ export default function Home() {
         <main>
           <Link href="/AddPlace">Add Place +</Link>
           <EntryList>
-            {poi.map(({ id, image, name, location }) => {
+            {data.map(({ _id, image, name, location }) => {
               return (
                 <EntryCard
-                  key={id}
+                  key={_id}
                   image={image}
                   name={name}
                   location={location}
