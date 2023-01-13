@@ -1,6 +1,6 @@
 # Recap Project 6 - Tourio
 
-In this project you are going to create a tour attraction app, where you can display, create, update and delete attraction entries in your own MongoDB database. So let's jump right in with the first userstory!
+Contributors: Gülfem, Iris, Robin
 
 ---
 
