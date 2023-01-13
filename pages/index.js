@@ -1,18 +1,14 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
 import EntryList from "@/components/entryList";
 import EntryCard from "@/components/entryCard";
 import useSWR from "swr";
+import db from "../lib/db.json";
+import { useState } from "react";
 
 export default function Home() {
-  const { data } = useSWR("/lib/db.json");
-  console.log(data);
-  if (!data) {
-    return <h1>Loading...</h1>;
-  }
-  if (data) {
+  const [poi, setPoi] = useState(db);
+
+  if (poi)
     return (
       <>
         <Head>
@@ -22,11 +18,20 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+          Test
           <EntryList>
-            <EntryCard />
+            {poi.map(({ id, image, name, location }) => {
+              return (
+                <EntryCard
+                  key={id}
+                  image={image}
+                  name={name}
+                  location={location}
+                />
+              );
+            })}
           </EntryList>
         </main>
       </>
     );
-  }
 }
