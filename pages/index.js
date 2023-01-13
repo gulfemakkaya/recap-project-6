@@ -5,6 +5,8 @@ import useSWR from "swr";
 import db from "../lib/db.json";
 import { useState } from "react";
 
+import Link from "next/link";
+
 export default function Home() {
   const [poi, setPoi] = useState(db);
 
@@ -18,6 +20,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+          <Link href="/AddPlace">Add Place +</Link>
           <EntryList>
             {poi.map(({ id, image, name, location }) => {
               return (
