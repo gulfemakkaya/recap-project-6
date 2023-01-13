@@ -1,5 +1,3 @@
 export default function EntryList({ children }) {
-  return;
-
-  <ul>{children}</ul>;
+  return <ul>{children}</ul>;
 }
