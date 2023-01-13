@@ -1,7 +1,6 @@
 import Head from "next/head";
 import EntryList from "@/components/entryList";
 import EntryCard from "@/components/entryCard";
-import useSWR from "swr";
 import db from "../lib/db.json";
 import { useState } from "react";
 
