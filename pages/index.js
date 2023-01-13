@@ -1,9 +1,9 @@
 import Head from "next/head";
 import EntryList from "@/components/entryList";
 import EntryCard from "@/components/entryCard";
-import useSWR from "swr";
 import db from "../lib/db.json";
 import { useState } from "react";
+import Header from "@/components/Header";
 
 import Link from "next/link";
 
@@ -19,6 +19,7 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <Header />
         <main>
           <Link href="/AddPlace">Add Place +</Link>
           <EntryList>
